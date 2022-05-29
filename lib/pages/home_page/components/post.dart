@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../components/profile_image.dart';
 import '../../../layout/colors.dart';
 
-class PostWithThreads extends StatefulWidget {
-  const PostWithThreads({Key? key}) : super(key: key);
+class Post extends StatefulWidget {
+  const Post({Key? key}) : super(key: key);
 
   @override
-  State<PostWithThreads> createState() => _PostWithThreadsState();
+  State<Post> createState() => _PostState();
 }
 
-class _PostWithThreadsState extends State<PostWithThreads> {
-  double heightColumn = 0.0;
-  final GlobalKey _globalKey = GlobalKey();
-
+class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      heightColumn = _globalKey.currentContext!.size!.height;
-      setState(() {});
-    });
 
     return SizedBox(
       width: size.width,
@@ -33,65 +24,23 @@ class _PostWithThreadsState extends State<PostWithThreads> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: heightColumn,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: (size.width * 0.08 * 2 + 15),
-                      bottom: (size.width * 0.05 * 2 + 10),
-                      child: SizedBox(
-                        height: heightColumn,
-                        width: size.width * 0.2,
-                        child: Center(
-                          child: Container(
-                            width: 3,
-                            height: heightColumn,
-                            decoration: const BoxDecoration(
-                              color: Color.fromRGBO(206, 213, 220, 1),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(25),
-                              ),
-                            ),
-                          ),
-                        ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: size.width * 0.2,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: ProfileImage(
+                        radius: size.width * 0.08,
+                        url:
+                            'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ProfileImage(
-                              radius: size.width * 0.08,
-                              url:
-                                  'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: size.width * 0.2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 10.0,
-                              bottom: 5,
-                            ),
-                            child: ProfileImage(
-                              radius: size.width * 0.05,
-                              url:
-                                  'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Column(
-                key: _globalKey,
                 children: [
                   SizedBox(
                     width: size.width * 0.8,
@@ -128,8 +77,7 @@ class _PostWithThreadsState extends State<PostWithThreads> {
                           ),
                         ),
                         Html(
-                          data:
-                              '<p>UXR/UX: You can only bring one item to a remote island to assist your research of native use of tools and usability. What do you bring?  <span> #TellMeAboutYou <span></p>',
+                          data: '<p>Y’all ready for this next post?  </p>',
                           style: {
                             'p': Style(
                               fontFamily: 'Raleway',
@@ -231,18 +179,6 @@ class _PostWithThreadsState extends State<PostWithThreads> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Show this thread',
-                            style: TextStyle(
-                              fontFamily: 'Raleway',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.bluePattern,
-                            ),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -252,7 +188,7 @@ class _PostWithThreadsState extends State<PostWithThreads> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 5,
+              top: 15,
               bottom: 15,
             ),
             child: Container(
@@ -260,7 +196,7 @@ class _PostWithThreadsState extends State<PostWithThreads> {
               height: 0.5,
               width: size.width,
             ),
-          ),
+          )
         ],
       ),
     );

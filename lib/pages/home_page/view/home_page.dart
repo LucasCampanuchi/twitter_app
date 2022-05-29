@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../components/bottom_app_bar.dart';
 import '../components/app_bar_home.dart';
 import '../components/floating_action.dart';
+import '../components/post.dart';
 import '../components/post_with_threads.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,11 +41,13 @@ class _HomePageState extends State<HomePage> {
         width: size.width,
         child: PageView(
           children: [
-            Column(
-              children: const [
-                SizedBox(height: 50),
-                PostWithThreads(),
-              ],
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  const PostWithThreads(),
+                  for (int i = 0; i < 5; i++) const Post(),
+                ],
+              ),
             ),
           ],
         ),
