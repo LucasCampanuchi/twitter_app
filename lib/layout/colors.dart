@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static var primary = const Color.fromRGBO(67, 80, 94, 1);
-  static var second = const Color.fromRGBO(88, 104, 121, 1);
+  static Color primary = const Color.fromRGBO(67, 80, 94, 1);
+  static Color second = const Color.fromRGBO(88, 104, 121, 1);
+
+  static Color bluePattern = const Color.fromRGBO(76, 158, 235, 1);
+  static Color textPattern = const Color.fromRGBO(20, 22, 25, 1);
 
   static const MaterialColor mcgpalette0 = MaterialColor(
     _mcgpalette0PrimaryValue,
