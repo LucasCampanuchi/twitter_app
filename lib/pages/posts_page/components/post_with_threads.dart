@@ -18,13 +18,24 @@ class _PostWithThreadsState extends State<PostWithThreads> {
   final GlobalKey _globalKey = GlobalKey();
 
   @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-
+  void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      heightColumn = _globalKey.currentContext!.size!.height;
+      if (_globalKey.currentContext != null) {
+        heightColumn = _globalKey.currentContext!.size!.height;
+      }
       setState(() {});
     });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
 
     return SizedBox(
       width: size.width,
