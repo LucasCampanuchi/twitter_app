@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-import 'package:twitter_app/pages/home_page/utils/screens.dart';
 import 'package:twitter_app/pages/posts_page/view/posts_page.dart';
-import 'package:twitter_app/pages/search_page/components/app_bar_search.dart';
 
 import '../../../components/bottom_app_bar/bottom_app_bar.dart';
+import '../../notifications_page/view/notifications_page.dart';
 import '../../search_page/view/search_page.dart';
-import '../components/app_bar_home.dart';
 import '../components/floating_action.dart';
 import '../store/home_store.dart';
+import '../utils/return_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,13 +34,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    dynamic appBar = controller.screen == Screen.home
-        ? AppBarHome(
-            appBar: AppBar(),
-          )
-        : AppBarSearch(
-            appBar: AppBar(),
-          );
+    dynamic appBar = getAppBar(controller);
 
     final Size size = MediaQuery.of(context).size;
 
@@ -65,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           children: const [
             PostsPage(),
             SearchPage(),
-            Icon(Icons.medical_services_outlined),
+            NotificationsPage(),
             Icon(Icons.message),
           ],
         ),
