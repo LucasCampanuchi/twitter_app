@@ -9,6 +9,8 @@ class AppColors {
 
   static Color grayPattern = const Color.fromRGBO(104, 118, 132, 1);
 
+  static Color grayContainer = const Color.fromRGBO(231, 236, 240, 1);
+
   static const MaterialColor mcgpalette0 = MaterialColor(
     _mcgpalette0PrimaryValue,
     <int, Color>{

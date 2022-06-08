@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mobx/mobx.dart';
+import 'package:twitter_app/pages/home_page/utils/screens.dart';
 import 'package:twitter_app/pages/posts_page/view/posts_page.dart';
+import 'package:twitter_app/pages/search_page/components/app_bar_search.dart';
 
 import '../../../components/bottom_app_bar/bottom_app_bar.dart';
+import '../../search_page/view/search_page.dart';
 import '../components/app_bar_home.dart';
 import '../components/floating_action.dart';
 import '../store/home_store.dart';
@@ -19,14 +23,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    reaction(
+      (_) => controller.screen,
+      (msg) => {
+        setState(() {}),
+      },
+    );
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final AppBarHome appBar = AppBarHome(
-      appBar: AppBar(),
-    );
+    dynamic appBar = controller.screen == Screen.home
+        ? AppBarHome(
+            appBar: AppBar(),
+          )
+        : AppBarSearch(
+            appBar: AppBar(),
+          );
 
     final Size size = MediaQuery.of(context).size;
 
@@ -49,7 +64,7 @@ class _HomePageState extends State<HomePage> {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             PostsPage(),
-            Icon(Icons.search),
+            SearchPage(),
             Icon(Icons.medical_services_outlined),
             Icon(Icons.message),
           ],
