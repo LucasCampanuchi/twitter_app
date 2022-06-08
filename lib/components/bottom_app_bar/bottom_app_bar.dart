@@ -13,41 +13,58 @@ class DefaultBottomAppBar extends StatelessWidget {
     final HomeStore controller = GetIt.I.get<HomeStore>();
 
     return BottomAppBar(
+      elevation: 0,
       shape: const CircularNotchedRectangle(),
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.only(
-          top: 15,
-          bottom: 20.0,
+          bottom: 10.0,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            ButtonBottomAppBar(
-              controller: controller,
-              iconSelected: 'home_blue',
-              iconNotSelected: 'home',
-              screen: Screen.home,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: Color.fromRGBO(189, 197, 205, 1),
+              ),
             ),
-            ButtonBottomAppBar(
-              controller: controller,
-              iconSelected: 'search_blue',
-              iconNotSelected: 'search',
-              screen: Screen.search,
-            ),
-            ButtonBottomAppBar(
-              controller: controller,
-              iconSelected: 'notification_blue',
-              iconNotSelected: 'notification',
-              screen: Screen.notification,
-            ),
-            ButtonBottomAppBar(
-              controller: controller,
-              iconSelected: 'message_blue',
-              iconNotSelected: 'mail',
-              screen: Screen.message,
-            ),
-          ],
+          ),
+          padding: const EdgeInsets.only(
+            top: 10.0,
+          ),
+          height: 60,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  ButtonBottomAppBar(
+                    controller: controller,
+                    iconSelected: 'home_blue',
+                    iconNotSelected: 'home',
+                    screen: Screen.home,
+                  ),
+                  ButtonBottomAppBar(
+                    controller: controller,
+                    iconSelected: 'search_blue',
+                    iconNotSelected: 'search',
+                    screen: Screen.search,
+                  ),
+                  ButtonBottomAppBar(
+                    controller: controller,
+                    iconSelected: 'notification_blue',
+                    iconNotSelected: 'notification',
+                    screen: Screen.notification,
+                  ),
+                  ButtonBottomAppBar(
+                    controller: controller,
+                    iconSelected: 'message_blue',
+                    iconNotSelected: 'mail',
+                    screen: Screen.message,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

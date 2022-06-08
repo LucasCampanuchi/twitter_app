@@ -7,6 +7,8 @@ class AppColors {
   static Color bluePattern = const Color.fromRGBO(76, 158, 235, 1);
   static Color textPattern = const Color.fromRGBO(20, 22, 25, 1);
 
+  static Color grayPattern = const Color.fromRGBO(104, 118, 132, 1);
+
   static const MaterialColor mcgpalette0 = MaterialColor(
     _mcgpalette0PrimaryValue,
     <int, Color>{

@@ -26,9 +26,12 @@ class ButtonBottomAppBar extends StatelessWidget {
         onTap: () => controller.setScreen(
           screen,
         ),
-        child: SvgPicture.asset(
-          'assets/svg/${controller.screen == screen ? iconSelected : iconNotSelected}.svg',
-          height: 25,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(
+            'assets/svg/${controller.screen == screen ? iconSelected : iconNotSelected}.svg',
+            height: 25,
+          ),
         ),
       ),
     );

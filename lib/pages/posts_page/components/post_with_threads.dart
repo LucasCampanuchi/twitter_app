@@ -19,7 +19,7 @@ class _PostWithThreadsState extends State<PostWithThreads> {
 
   @override
   void initState() {
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
       if (_globalKey.currentContext != null) {
         heightColumn = _globalKey.currentContext!.size!.height;
       }

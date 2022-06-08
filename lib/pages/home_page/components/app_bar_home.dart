@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:twitter_app/components/profile_image.dart';
+
+import '../../../utils/constants.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
@@ -19,8 +22,9 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Stack(
               children: [
-                Image.asset(
-                  'assets/svg/Round.png',
+                ProfileImage(
+                  radius: 20,
+                  url: url,
                 ),
                 Positioned(
                   right: 0,
